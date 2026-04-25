@@ -1,0 +1,12 @@
+.env
+.temp/
+.claude
+generated-carousels
+headshot-generated-images/
+headshot-input-images
+skills
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
