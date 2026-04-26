@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:openrouter.ai)",
+      "Bash(pip install *)",
+      "Bash(unzip -o ad-generator.skill)",
+      "Bash(python tools/generate_video.py *)",
+      "Bash(python tools/generate_headshot.py *)",
+      "Bash(curl *)",
+      "Bash(dir D:\\\\Claude Code\\\\TechRover\\\\brand-guidelines *)",
+      "Bash(python tools/generate_brand_guidelines.py)",
+      "Bash(python *)",
+      "WebSearch",
+      "WebFetch(domain:developers.facebook.com)",
+      "WebFetch(domain:docs.kie.ai)",
+      "Bash(python3 *)",
+      "Bash(file carousel-starting-images/*.png)",
+      "Bash(dir *)"
+    ]
+  }
+}
