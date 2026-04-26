@@ -5,7 +5,7 @@ You're working inside the **WAT framework** (Workflows, Agents, Tools). This arc
 ## The WAT Architecture
 
 **Layer 1: Workflows (The Instructions)**
-- Markdown SOPs stored in `workflows/`
+- Markdown SOPs stored in `.claude/commands/`, invokable as slash commands (e.g. `/carousel_sequential_generation`)
 - Each workflow defines the objective, required inputs, which tools to use, expected outputs, and how to handle edge cases
 - Written in plain language, the same way you'd brief someone on your team
 
@@ -13,7 +13,7 @@ You're working inside the **WAT framework** (Workflows, Agents, Tools). This arc
 - This is your role. You're responsible for intelligent coordination.
 - Read the relevant workflow, run tools in the correct sequence, handle failures gracefully, and ask clarifying questions when needed
 - You connect intent to execution without trying to do everything yourself
-- Example: If you need to pull data from a website, don't attempt it directly. Read `workflows/scrape_website.md`, figure out the required inputs, then execute `tools/scrape_single_site.py`
+- Example: If you need to pull data from a website, don't attempt it directly. Read `.claude/commands/scrape_website.md`, figure out the required inputs, then execute `tools/scrape_single_site.py`
 
 **Layer 3: Tools (The Execution)**
 - Python scripts in `tools/` that do the actual work
@@ -57,11 +57,14 @@ This loop is how the framework improves over time.
 
 **Directory layout:**
 ```
-.tmp/           # Temporary files (scraped data, intermediate exports). Regenerated as needed.
-tools/          # Python scripts for deterministic execution
-workflows/      # Markdown SOPs defining what to do and how
-.env            # API keys and environment variables (NEVER store secrets anywhere else)
+.claude/commands/   # Workflow SOPs, exposed as slash commands
+.claude/skills/     # Folder-based skills (each in its own dir with SKILL.md)
+.claude/settings.local.json  # Personal Claude Code settings (gitignored)
+tools/              # Python scripts for deterministic execution
+.tmp/               # Temporary files (scraped data, intermediate exports). Regenerated as needed.
+.env                # API keys and environment variables (NEVER store secrets anywhere else)
 credentials.json, token.json  # Google OAuth (gitignored)
+CLAUDE.md           # These instructions (auto-loaded every session)
 ```
 
 **Core principle:** Local files are just for processing. Anything I need to see or use lives in cloud services. Everything in `.tmp/` is disposable.

@@ -2,9 +2,10 @@
 generated-carousels
 headshot-generated-images/
 headshot-input-images
-skills
 __pycache__/
 *.pyc
 *.pyo
 .venv/
 venv/
+.claude/worktrees/
+.claude/settings.local.json
